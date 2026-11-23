@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="menu_risk_root" name="Risk Monitor" sequence="95"
+              web_icon="eclipse_risk_monitor,static/description/icon.png"
+              groups="group_risk_user"/>
+    <menuitem id="menu_risk_signals" name="Signals" parent="menu_risk_root" sequence="10"
+              action="action_eclipse_risk_signal"/>
+    <menuitem id="menu_risk_metrics" name="Daily Metrics" parent="menu_risk_root" sequence="20"
+              action="action_eclipse_risk_metric"/>
+    <menuitem id="menu_risk_config" name="Configuration" parent="menu_risk_root" sequence="90"
+              groups="group_risk_manager"/>
+    <menuitem id="menu_risk_checks" name="Checks" parent="menu_risk_config" sequence="10"
+              action="action_eclipse_risk_check"/>
+    <menuitem id="menu_risk_settings" name="Settings" parent="menu_risk_config" sequence="20"
+              action="action_eclipse_risk_settings"/>
+</odoo>

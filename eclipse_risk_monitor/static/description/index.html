@@ -1,0 +1,103 @@
+<section class="container" style="max-width: 1100px;">
+    <div class="row">
+        <div class="col-12 text-center" style="padding-top: 24px;">
+            <h1 style="font-size: 38px; font-weight: 700; color: #14213d;">Operational Risk Monitor</h1>
+            <p style="font-size: 20px; color: #444; margin-top: 8px;">
+                Find out about silent failures in Odoo before your customers, your accountant or the tax agency do.
+            </p>
+            <p style="font-size: 15px; color: #666;">
+                Every hour it checks the database, turns operational problems into prioritised signals (P0-P3)
+                with a probable cause and a recommended next step, links related problems across areas,
+                assigns them to a responsible user and verifies afterwards that each problem really disappeared.
+            </p>
+        </div>
+    </div>
+
+    <div class="row" style="margin-top: 24px;">
+        <div class="col-12">
+            <img src="screenshot_signals.png" class="img-fluid" style="border: 1px solid #ddd; border-radius: 6px;" alt="Risk signals grouped by priority"/>
+        </div>
+    </div>
+
+    <h2 style="margin-top: 40px; font-size: 26px; color: #14213d;">What it detects</h2>
+    <table class="table table-bordered" style="margin-top: 12px;">
+        <thead style="background-color: #f3f4f6;">
+            <tr><th>Check</th><th>Area</th><th>What is reported</th><th>Needs</th></tr>
+        </thead>
+        <tbody>
+            <tr><td>Scheduled actions failing or not running</td><td>Technical</td>
+                <td>Scheduled actions with consecutive failures (Odoo deactivates them after 5 failures over 7 days) and actions overdue by more than one interval. Three or more overdue actions are reported as a stopped cron worker (critical).</td><td>-</td></tr>
+            <tr><td>Emails that could not be sent</td><td>Technical</td>
+                <td>Outgoing emails in failed state in the last 24 h, with the most frequent error. Severity rises when invoice emails are affected. Compared with the previous 24 h to detect acceleration.</td><td>-</td></tr>
+            <tr><td>Electronic invoices rejected or blocked</td><td>Financial</td>
+                <td>Spain Veri*Factu: invoices whose latest record was rejected or registered with errors by the AEAT. Documents of e-invoicing formats based on <code>account_edi</code> (for example Spain SII) blocked by an error or waiting for more than 24 h.</td><td>Invoicing; Veri*Factu or SII localisation</td></tr>
+            <tr><td>Overdue customer invoices</td><td>Financial</td>
+                <td>Posted customer invoices unpaid beyond a grace period, above a minimum amount. Severity rises when the overdue amount grows 20 % or more in 7 days.</td><td>Invoicing</td></tr>
+            <tr><td>Online payments failing</td><td>Financial</td>
+                <td>Payment transactions in error in the last 24 h, compared with the previous 24 h.</td><td>Payment providers</td></tr>
+            <tr><td>Late deliveries</td><td>Operational</td>
+                <td>Outgoing transfers not done whose scheduled date is in the past beyond a grace period.</td><td>Inventory</td></tr>
+            <tr><td>Negative stock</td><td>Operational</td>
+                <td>Product quantities below zero in internal locations.</td><td>Inventory</td></tr>
+            <tr><td>Drop in confirmed sales orders</td><td>Customer</td>
+                <td>Orders confirmed the previous day compared with the same weekday of the 4 previous weeks (reported from a 40 % drop, with at least 5 orders on average).</td><td>Sales</td></tr>
+        </tbody>
+    </table>
+    <p style="color: #666;">Checks whose app is not installed are skipped automatically. Thresholds and grace periods can be changed per check; each check can be switched off.</p>
+
+    <h2 style="margin-top: 40px; font-size: 26px; color: #14213d;">How a signal is prioritised</h2>
+    <div class="row">
+        <div class="col-md-6">
+            <p>The score (0-100) is deterministic and explained on every signal:</p>
+            <ul>
+                <li>severity of the problem (up to 55 points)</li>
+                <li>number of events observed (up to 25 points)</li>
+                <li>certainty of the rule: 1.0 for facts read from the database, 0.7 for statistical rules (up to 20 points)</li>
+                <li><b>compound risk</b>: +15 per other area with a related open problem in the last 48 h (max. +30), only for direct causal links, e.g. undelivered invoice emails + growing overdue receivables, failing online payments + a drop in confirmed orders, failing scheduled actions + blocked e-invoices</li>
+                <li><b>acceleration</b>: +15 when events in the last 24 h are at least 3 and 50 % above the previous 24 h</li>
+                <li><b>bounded learning</b>: users mark signals as useful or not useful; each check adjusts its weight by 0.05, never beyond +/-0.20</li>
+            </ul>
+            <p>P0 from 85, P1 from 65 (or critical severity), P2 from 40, P3 below.</p>
+        </div>
+        <div class="col-md-6">
+            <img src="screenshot_signal.png" class="img-fluid" style="border: 1px solid #ddd; border-radius: 6px;" alt="Signal with cause, next step and score explanation"/>
+        </div>
+    </div>
+
+    <h2 style="margin-top: 40px; font-size: 26px; color: #14213d;">From detection to verified resolution</h2>
+    <ol>
+        <li><b>Detect</b>: the checks run every hour (scheduled action) or on demand from the settings.</li>
+        <li><b>Prioritise</b>: one signal per problem; repeated detections update it instead of creating duplicates.</li>
+        <li><b>Assign</b>: every new P0/P1 creates a to-do activity for the responsible user of the company.</li>
+        <li><b>Verify</b>: when the problem is no longer detected, the signal is resolved automatically and marked as verified; if it comes back, the same signal is reopened.</li>
+        <li><b>Report</b>: a daily email digest lists the open P0-P2 signals to the Risk Monitor managers.</li>
+    </ol>
+    <div class="row">
+        <div class="col-md-6"><img src="screenshot_checks.png" class="img-fluid" style="border: 1px solid #ddd; border-radius: 6px;" alt="Configurable checks"/></div>
+        <div class="col-md-6"><img src="screenshot_metrics.png" class="img-fluid" style="border: 1px solid #ddd; border-radius: 6px;" alt="Daily metrics"/></div>
+    </div>
+
+    <h2 style="margin-top: 40px; font-size: 26px; color: #14213d;">Data protection and security</h2>
+    <ul>
+        <li><b>No external service and no automatic transmission</b>: everything runs inside your database.</li>
+        <li>Optional JSON export of daily metrics and anonymous signal summaries, generated only when a manager clicks the button. It contains no names, email addresses or partner data, and only its creator can download it.</li>
+        <li>Email addresses and phone numbers are removed from the error texts stored in signals.</li>
+        <li>Multi-company: record rules restrict signals and metrics to the companies each user can access.</li>
+        <li>Two access groups: users see and handle signals; managers configure checks, settings and the export.</li>
+        <li>No activation key, no obfuscated code. Licence LGPL-3.</li>
+    </ul>
+    <img src="screenshot_settings.png" class="img-fluid" style="border: 1px solid #ddd; border-radius: 6px;" alt="Settings"/>
+
+    <h2 style="margin-top: 40px; font-size: 26px; color: #14213d;">Requirements and limits</h2>
+    <ul>
+        <li>Odoo 17.0, 18.0 and 19.0, Community or Enterprise, on-premise or Odoo.sh (Odoo Online does not allow third-party apps with Python code).</li>
+        <li>Depends only on <code>base_setup</code> and <code>mail</code>; each check activates when its app is installed.</li>
+        <li>Odoo 17.0 does not record failures of scheduled actions: on that version the scheduled-action check reports overdue actions only.</li>
+        <li>TicketBAI and FacturaE do not use <code>account_edi</code> and are not covered yet.</li>
+        <li>The sales-drop check compares calendar days in UTC.</li>
+        <li>Database-wide checks (scheduled actions, emails without company) are reported in the main company.</li>
+    </ul>
+
+    <h2 style="margin-top: 40px; font-size: 26px; color: #14213d;">Support</h2>
+    <p>Questions, bugs or a check you would like to see: <a href="mailto:elmershan7878@gmail.com">elmershan7878@gmail.com</a></p>
+</section>

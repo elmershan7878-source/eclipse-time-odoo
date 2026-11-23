@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <record id="check_tech_cron" model="eclipse.risk.check">
+            <field name="code">TECH_CRON</field>
+            <field name="sequence">10</field>
+            <field name="name">Scheduled actions failing or not running</field>
+            <field name="area">technical</field>
+            <field name="confidence">1.0</field>
+            <field name="description">Active scheduled actions with consecutive failures (Odoo deactivates them after 5 failures over 7 days) and scheduled actions overdue by more than one interval (minimum 1 hour). Three or more overdue actions are reported as a stopped cron worker (critical). Database-wide: reported in the main company.</field>
+        </record>
+        <record id="check_tech_mail" model="eclipse.risk.check">
+            <field name="code">TECH_MAIL</field>
+            <field name="sequence">20</field>
+            <field name="name">Emails that could not be sent</field>
+            <field name="area">technical</field>
+            <field name="confidence">1.0</field>
+            <field name="threshold">10</field>
+            <field name="description">Outgoing emails in "failed" state created in the last 24 h. Severity rises when the count reaches the threshold or when invoice emails are affected. Compared with the previous 24 h to detect acceleration. Email addresses and phone numbers are removed from error texts.</field>
+        </record>
+        <record id="check_fin_einvoice" model="eclipse.risk.check">
+            <field name="code">FIN_EINVOICE</field>
+            <field name="sequence">30</field>
+            <field name="name">Electronic invoices rejected or blocked</field>
+            <field name="area">financial</field>
+            <field name="confidence">1.0</field>
+            <field name="required_model">account.move</field>
+            <field name="description">Spain Veri*Factu: invoices whose latest record (last 7 days) was rejected or registered with errors by the AEAT (requires l10n_es_edi_verifactu). Electronic invoicing based on account_edi (for example Spain SII): documents blocked by an error, or waiting to be sent for more than 24 h. TicketBAI and FacturaE do not use account_edi and are not covered.</field>
+        </record>
+        <record id="check_fin_ar" model="eclipse.risk.check">
+            <field name="code">FIN_AR</field>
+            <field name="sequence">40</field>
+            <field name="name">Overdue customer invoices</field>
+            <field name="area">financial</field>
+            <field name="confidence">1.0</field>
+            <field name="grace_days">15</field>
+            <field name="threshold">1000</field>
+            <field name="required_model">account.move</field>
+            <field name="description">Posted customer invoices unpaid more than "grace days" after their due date, when the outstanding amount reaches the threshold (company currency). Severity rises when the overdue amount grew 20 % or more in 7 days.</field>
+        </record>
+        <record id="check_fin_payment" model="eclipse.risk.check">
+            <field name="code">FIN_PAYMENT</field>
+            <field name="sequence">50</field>
+            <field name="name">Online payments failing</field>
+            <field name="area">financial</field>
+            <field name="confidence">1.0</field>
+            <field name="required_model">payment.transaction</field>
+            <field name="description">Payment transactions that ended in error in the last 24 h, compared with the previous 24 h (requires the payment app).</field>
+        </record>
+        <record id="check_ops_late" model="eclipse.risk.check">
+            <field name="code">OPS_LATE</field>
+            <field name="sequence">60</field>
+            <field name="name">Late deliveries</field>
+            <field name="area">operational</field>
+            <field name="confidence">1.0</field>
+            <field name="grace_days">1</field>
+            <field name="threshold">1</field>
+            <field name="required_model">stock.picking</field>
+            <field name="description">Outgoing transfers not done whose scheduled date is more than "grace days" in the past, when their number reaches the threshold (requires Inventory).</field>
+        </record>
+        <record id="check_ops_negstock" model="eclipse.risk.check">
+            <field name="code">OPS_NEGSTOCK</field>
+            <field name="sequence">70</field>
+            <field name="name">Negative stock</field>
+            <field name="area">operational</field>
+            <field name="confidence">1.0</field>
+            <field name="required_model">stock.quant</field>
+            <field name="description">Product quantities below zero in internal locations (requires Inventory).</field>
+        </record>
+        <record id="check_cus_sales" model="eclipse.risk.check">
+            <field name="code">CUS_SALES</field>
+            <field name="sequence">80</field>
+            <field name="name">Drop in confirmed sales orders</field>
+            <field name="area">customer</field>
+            <field name="confidence">0.7</field>
+            <field name="threshold">40</field>
+            <field name="required_model">sale.order</field>
+            <field name="description">Sales orders confirmed the previous day (UTC) compared with the average of the same weekday over the 4 previous weeks. Reported when the drop reaches the threshold (%) and the average is at least 5 orders. Statistical rule: certainty 0.7 (requires Sales).</field>
+        </record>
+    </data>
+</odoo>

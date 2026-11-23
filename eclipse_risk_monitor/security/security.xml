@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="module_category_risk_monitor" model="ir.module.category">
+        <field name="name">Operational Risk Monitor</field>
+        <field name="sequence">90</field>
+    </record>
+
+    <record id="privilege_risk_monitor" model="res.groups.privilege">
+        <field name="name">Operational Risk Monitor</field>
+        <field name="category_id" ref="module_category_risk_monitor"/>
+    </record>
+
+    <record id="group_risk_user" model="res.groups">
+        <field name="name">User: see and handle signals</field>
+        <field name="privilege_id" ref="privilege_risk_monitor"/>
+        <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+    </record>
+
+    <record id="group_risk_manager" model="res.groups">
+        <field name="name">Manager: configure checks and settings</field>
+        <field name="privilege_id" ref="privilege_risk_monitor"/>
+        <field name="implied_ids" eval="[(4, ref('group_risk_user'))]"/>
+        <field name="user_ids" eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"/>
+    </record>
+
+    <!-- Multi-company isolation: users only see the signals and metrics
+         of the companies they are allowed to access. -->
+    <record id="rule_risk_signal_company" model="ir.rule">
+        <field name="name">Risk signal: allowed companies</field>
+        <field name="model_id" ref="model_eclipse_risk_signal"/>
+        <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+    </record>
+    <record id="rule_risk_metric_company" model="ir.rule">
+        <field name="name">Risk metric: allowed companies</field>
+        <field name="model_id" ref="model_eclipse_risk_metric"/>
+        <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+    </record>
+</odoo>
