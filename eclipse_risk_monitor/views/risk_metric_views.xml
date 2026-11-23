@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_eclipse_risk_metric_list" model="ir.ui.view">
+        <field name="name">eclipse.risk.metric.list</field>
+        <field name="model">eclipse.risk.metric</field>
+        <field name="arch" type="xml">
+            <list string="Daily Metrics" create="false" edit="false">
+                <field name="day"/>
+                <field name="metric"/>
+                <field name="value"/>
+                <field name="partial"/>
+                <field name="company_id" groups="base.group_multi_company"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_eclipse_risk_metric_graph" model="ir.ui.view">
+        <field name="name">eclipse.risk.metric.graph</field>
+        <field name="model">eclipse.risk.metric</field>
+        <field name="arch" type="xml">
+            <graph string="Daily Metrics" type="line">
+                <field name="day" interval="day"/>
+                <field name="metric"/>
+                <field name="value" type="measure"/>
+            </graph>
+        </field>
+    </record>
+
+    <record id="view_eclipse_risk_metric_pivot" model="ir.ui.view">
+        <field name="name">eclipse.risk.metric.pivot</field>
+        <field name="model">eclipse.risk.metric</field>
+        <field name="arch" type="xml">
+            <pivot string="Daily Metrics">
+                <field name="metric" type="row"/>
+                <field name="day" interval="day" type="col"/>
+                <field name="value" type="measure"/>
+            </pivot>
+        </field>
+    </record>
+
+    <record id="view_eclipse_risk_metric_search" model="ir.ui.view">
+        <field name="name">eclipse.risk.metric.search</field>
+        <field name="model">eclipse.risk.metric</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="metric"/>
+                <filter name="filter_30d" string="Last 30 days"
+                        domain="[('day', '&gt;=', (context_today() - relativedelta(days=30)).strftime('%Y-%m-%d'))]"/>
+                <group expand="0" string="Group By">
+                    <filter name="group_metric" string="Metric" context="{'group_by': 'metric'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_eclipse_risk_metric" model="ir.actions.act_window">
+        <field name="name">Daily Metrics</field>
+        <field name="res_model">eclipse.risk.metric</field>
+        <field name="view_mode">graph,pivot,list</field>
+        <field name="context">{'search_default_filter_30d': 1}</field>
+    </record>
+</odoo>

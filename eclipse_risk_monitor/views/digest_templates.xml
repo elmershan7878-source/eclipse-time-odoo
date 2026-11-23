@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="digest_email">
+        <div style="font-family: Arial, sans-serif; font-size: 14px; color: #222;">
+            <p>Open operational signals for <strong t-out="company.name"/>:
+                <t t-out="counts.get('p0', 0)"/> P0, <t t-out="counts.get('p1', 0)"/> P1,
+                <t t-out="counts.get('p2', 0)"/> P2.</p>
+            <table style="border-collapse: collapse; width: 100%;">
+                <tr style="background: #f3f3f3; text-align: left;">
+                    <th style="padding: 6px; border-bottom: 1px solid #ddd;">Priority</th>
+                    <th style="padding: 6px; border-bottom: 1px solid #ddd;">Signal</th>
+                    <th style="padding: 6px; border-bottom: 1px solid #ddd;">Next step</th>
+                    <th style="padding: 6px; border-bottom: 1px solid #ddd;">Responsible</th>
+                </tr>
+                <tr t-foreach="signals" t-as="signal">
+                    <td style="padding: 6px; border-bottom: 1px solid #eee; white-space: nowrap;">
+                        <strong t-out="signal.priority.upper()"/> (<t t-out="signal.score"/>)
+                        <t t-if="signal.compound"><br/>compound</t>
+                    </td>
+                    <td style="padding: 6px; border-bottom: 1px solid #eee;">
+                        <strong t-out="signal.name"/><br/>
+                        <span t-out="signal.problem"/>
+                    </td>
+                    <td style="padding: 6px; border-bottom: 1px solid #eee;" t-out="signal.recommendation"/>
+                    <td style="padding: 6px; border-bottom: 1px solid #eee;" t-out="signal.user_id.name or '-'"/>
+                </tr>
+            </table>
+            <p style="color: #777; font-size: 12px;">Sent by Operational Risk Monitor. Signals disappear
+                from this digest automatically once the check no longer detects the problem.</p>
+        </div>
+    </template>
+</odoo>

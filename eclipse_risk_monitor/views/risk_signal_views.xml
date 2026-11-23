@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_eclipse_risk_signal_list" model="ir.ui.view">
+        <field name="name">eclipse.risk.signal.list</field>
+        <field name="model">eclipse.risk.signal</field>
+        <field name="arch" type="xml">
+            <list string="Risk Signals" create="false"
+                  decoration-danger="priority == 'p0'" decoration-warning="priority == 'p1'"
+                  decoration-muted="state in ('resolved', 'dismissed')">
+                <field name="priority"/>
+                <field name="score"/>
+                <field name="name"/>
+                <field name="area"/>
+                <field name="compound" optional="show"/>
+                <field name="accelerating" optional="hide"/>
+                <field name="occurrences" optional="show"/>
+                <field name="user_id" optional="show" widget="many2one_avatar_user"/>
+                <field name="last_seen"/>
+                <field name="company_id" groups="base.group_multi_company" optional="show"/>
+                <field name="state" widget="badge"
+                       decoration-danger="state == 'open'" decoration-info="state == 'acknowledged'"
+                       decoration-success="state == 'resolved'"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_eclipse_risk_signal_kanban" model="ir.ui.view">
+        <field name="name">eclipse.risk.signal.kanban</field>
+        <field name="model">eclipse.risk.signal</field>
+        <field name="arch" type="xml">
+            <kanban default_group_by="priority" create="false" group_create="false" group_delete="false"
+                    group_edit="false" records_draggable="false" class="o_kanban_small_column">
+                <field name="priority"/>
+                <field name="state"/>
+                <field name="compound"/>
+                <field name="accelerating"/>
+                <templates>
+                    <t t-name="card">
+                        <div class="d-flex justify-content-between align-items-start">
+                            <field name="name" class="fw-bold"/>
+                            <span class="badge rounded-pill text-bg-dark ms-2 flex-shrink-0" title="Score (0-100)"><field name="score"/></span>
+                        </div>
+                        <div class="text-muted small mt-1">
+                            <field name="area"/> · <field name="occurrences"/> event(s)
+                        </div>
+                        <div class="mt-1">
+                            <span t-if="record.compound.raw_value" class="badge text-bg-danger me-1">Compound</span>
+                            <span t-if="record.accelerating.raw_value" class="badge text-bg-warning me-1">Accelerating</span>
+                            <field name="state" widget="badge"/>
+                        </div>
+                        <footer class="mt-2">
+                            <field name="activity_ids" widget="kanban_activity"/>
+                            <field name="user_id" widget="many2one_avatar_user" class="ms-auto"/>
+                        </footer>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <record id="view_eclipse_risk_signal_form" model="ir.ui.view">
+        <field name="name">eclipse.risk.signal.form</field>
+        <field name="model">eclipse.risk.signal</field>
+        <field name="arch" type="xml">
+            <form string="Risk Signal" create="false">
+                <header>
+                    <button name="action_acknowledge" type="object" string="Take in charge" class="btn-primary"
+                            invisible="state != 'open'"/>
+                    <button name="action_mark_useful" type="object" string="Useful"
+                            invisible="feedback == 'useful' or state == 'dismissed'"
+                            help="Raises the weight of this check (+0.05, max +0.20)."/>
+                    <button name="action_dismiss" type="object" string="Not useful / dismiss"
+                            invisible="state in ('dismissed', 'resolved')"
+                            help="Lowers the weight of this check (-0.05, min -0.20) and hides the signal."/>
+                    <button name="action_reopen" type="object" string="Reopen" invisible="state != 'dismissed'"/>
+                    <button name="action_open_record" type="object" string="Open related record"
+                            invisible="not res_id"/>
+                    <field name="state" widget="statusbar" statusbar_visible="open,acknowledged,resolved"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1><field name="name"/></h1>
+                        <div>
+                            <field name="priority" widget="badge"
+                                   decoration-danger="priority == 'p0'" decoration-warning="priority == 'p1'"
+                                   decoration-info="priority == 'p2'"/>
+                            <span class="ms-2">Score <field name="score" class="fw-bold"/>/100</span>
+                            <span class="badge text-bg-danger ms-2" invisible="not compound">Compound risk</span>
+                            <span class="badge text-bg-warning ms-2" invisible="not accelerating">Accelerating</span>
+                            <span class="badge text-bg-success ms-2" invisible="not verified">Resolution verified</span>
+                        </div>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="area"/>
+                            <field name="check_id"/>
+                            <field name="user_id" widget="many2one_avatar_user"/>
+                            <field name="company_id" groups="base.group_multi_company"/>
+                        </group>
+                        <group>
+                            <field name="first_seen"/>
+                            <field name="last_seen"/>
+                            <field name="resolved_on" invisible="not resolved_on"/>
+                            <field name="reopen_count" invisible="not reopen_count"/>
+                            <field name="feedback" invisible="not feedback"/>
+                        </group>
+                    </group>
+                    <group string="What is happening">
+                        <field name="problem" nolabel="1" colspan="2"/>
+                    </group>
+                    <group string="Probable cause">
+                        <field name="cause" nolabel="1" colspan="2"/>
+                    </group>
+                    <group string="Recommended next step">
+                        <field name="recommendation" nolabel="1" colspan="2"/>
+                    </group>
+                    <notebook>
+                        <page string="Related signals" name="related">
+                            <field name="related_signal_ids">
+                                <list>
+                                    <field name="priority"/>
+                                    <field name="name"/>
+                                    <field name="area"/>
+                                    <field name="state"/>
+                                </list>
+                            </field>
+                        </page>
+                        <page string="Why this priority" name="score">
+                            <group>
+                                <field name="severity"/>
+                                <field name="occurrences"/>
+                                <field name="occurrences_24h"/>
+                                <field name="occurrences_prev_24h"/>
+                                <field name="confidence"/>
+                                <field name="score_explanation"/>
+                            </group>
+                        </page>
+                    </notebook>
+                    <field name="res_model" invisible="1"/>
+                    <field name="res_id" invisible="1"/>
+                    <field name="compound" invisible="1"/>
+                    <field name="accelerating" invisible="1"/>
+                    <field name="verified" invisible="1"/>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_eclipse_risk_signal_search" model="ir.ui.view">
+        <field name="name">eclipse.risk.signal.search</field>
+        <field name="model">eclipse.risk.signal</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="check_id"/>
+                <field name="user_id"/>
+                <filter name="filter_active" string="To handle" domain="[('state', 'in', ('open', 'acknowledged'))]"/>
+                <filter name="filter_mine" string="My signals" domain="[('user_id', '=', uid)]"/>
+                <separator/>
+                <filter name="filter_p0p1" string="P0 / P1" domain="[('priority', 'in', ('p0', 'p1'))]"/>
+                <filter name="filter_compound" string="Compound risk" domain="[('compound', '=', True)]"/>
+                <filter name="filter_accelerating" string="Accelerating" domain="[('accelerating', '=', True)]"/>
+                <separator/>
+                <filter name="filter_verified" string="Resolution verified" domain="[('verified', '=', True)]"/>
+                <group expand="0" string="Group By">
+                    <filter name="group_priority" string="Priority" context="{'group_by': 'priority'}"/>
+                    <filter name="group_area" string="Area" context="{'group_by': 'area'}"/>
+                    <filter name="group_state" string="Status" context="{'group_by': 'state'}"/>
+                    <filter name="group_check" string="Check" context="{'group_by': 'check_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="view_eclipse_risk_signal_pivot" model="ir.ui.view">
+        <field name="name">eclipse.risk.signal.pivot</field>
+        <field name="model">eclipse.risk.signal</field>
+        <field name="arch" type="xml">
+            <pivot string="Signals">
+                <field name="area" type="row"/>
+                <field name="priority" type="col"/>
+            </pivot>
+        </field>
+    </record>
+
+    <record id="view_eclipse_risk_signal_graph" model="ir.ui.view">
+        <field name="name">eclipse.risk.signal.graph</field>
+        <field name="model">eclipse.risk.signal</field>
+        <field name="arch" type="xml">
+            <graph string="Signals" type="bar" stacked="1">
+                <field name="area"/>
+                <field name="priority"/>
+            </graph>
+        </field>
+    </record>
+
+    <record id="action_eclipse_risk_signal" model="ir.actions.act_window">
+        <field name="name">Risk Signals</field>
+        <field name="res_model">eclipse.risk.signal</field>
+        <field name="view_mode">kanban,list,form,pivot,graph</field>
+        <field name="context">{'search_default_filter_active': 1}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">No operational problem detected</p>
+            <p>The checks run every hour. Each detected problem appears here with its priority,
+                probable cause and next step, and disappears automatically once it is solved.</p>
+        </field>
+    </record>
+</odoo>
