@@ -1,0 +1,7 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_risk_signal_user,risk.signal.user,model_eclipse_risk_signal,group_risk_user,1,1,0,0
+access_risk_signal_manager,risk.signal.manager,model_eclipse_risk_signal,group_risk_manager,1,1,0,1
+access_risk_check_user,risk.check.user,model_eclipse_risk_check,group_risk_user,1,0,0,0
+access_risk_check_manager,risk.check.manager,model_eclipse_risk_check,group_risk_manager,1,1,0,0
+access_risk_metric_user,risk.metric.user,model_eclipse_risk_metric,group_risk_user,1,0,0,0
+access_risk_metric_manager,risk.metric.manager,model_eclipse_risk_metric,group_risk_manager,1,0,0,1

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="res_config_settings_view_form" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.eclipse.risk</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="base.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//form" position="inside">
+                <app data-string="Risk Monitor" string="Risk Monitor" name="eclipse_risk_monitor"
+                     groups="eclipse_risk_monitor.group_risk_manager">
+                    <block title="Operational Risk Monitor" name="eclipse_risk_monitor_block">
+                        <setting string="Responsible" company_dependent="1"
+                                 help="Receives a to-do activity for every new P0/P1 signal of this company.">
+                            <field name="eclipse_risk_user_id"/>
+                        </setting>
+                        <setting string="Daily digest" company_dependent="1"
+                                 help="Daily email with the open P0-P2 signals to the Risk Monitor managers.">
+                            <field name="eclipse_risk_digest"/>
+                        </setting>
+                        <setting string="Run the checks now"
+                                 help="Scans the current company immediately (the checks also run every hour).">
+                            <button name="action_eclipse_risk_scan_now" type="object" string="Scan now"
+                                    class="btn-link" icon="oi-arrow-right"/>
+                        </setting>
+                        <setting string="Export (optional)"
+                                 help="Downloads a JSON file with the daily metrics and anonymous signal summaries of the current company (last 90 days). Nothing is sent anywhere: the file is generated only when you click.">
+                            <button name="action_eclipse_risk_export" type="object" string="Download JSON"
+                                    class="btn-link" icon="oi-arrow-right"/>
+                        </setting>
+                    </block>
+                </app>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="action_eclipse_risk_settings" model="ir.actions.act_window">
+        <field name="name">Settings</field>
+        <field name="res_model">res.config.settings</field>
+        <field name="view_mode">form</field>
+        <field name="target">inline</field>
+        <field name="context">{'module': 'eclipse_risk_monitor', 'bin_size': False}</field>
+    </record>
+</odoo>
