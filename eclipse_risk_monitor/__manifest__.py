@@ -1,6 +1,6 @@
 {
     'name': 'Operational Risk Monitor',
-    'version': '19.0.1.0.0',
+    'version': '19.0.1.0.1',
     'summary': 'Detects failing scheduled actions, undelivered emails, rejected '
                'e-invoices, late deliveries, overdue receivables and sales drops, '
                'prioritises them P0-P3 and tracks their resolution.',

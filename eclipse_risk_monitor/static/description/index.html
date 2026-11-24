@@ -96,7 +96,16 @@
         <li>TicketBAI and FacturaE do not use <code>account_edi</code> and are not covered yet.</li>
         <li>The sales-drop check compares calendar days in UTC.</li>
         <li>Database-wide checks (scheduled actions, emails without company) are reported in the main company.</li>
+        <li>User interface, signals and daily digest available in English and Spanish; texts are written in the language of each company.</li>
     </ul>
+
+    <h2 style="margin-top: 40px; font-size: 26px; color: #14213d;">Installation</h2>
+    <ol>
+        <li>Download the module for your Odoo version (or use "Deploy on Odoo.sh") and copy the <code>eclipse_risk_monitor</code> folder into your addons path.</li>
+        <li>Update the Apps list and install <b>Operational Risk Monitor</b>. The administrator gets the Manager role automatically.</li>
+        <li>Give other users the <b>Operational Risk Monitor</b> access right (User or Manager) in Settings &gt; Users.</li>
+        <li>In Settings &gt; Risk Monitor choose the responsible user and press <b>Scan now</b>: the first signals appear immediately. Afterwards the checks run every hour.</li>
+    </ol>
 
     <h2 style="margin-top: 40px; font-size: 26px; color: #14213d;">Support</h2>
     <p>Questions, bugs or a check you would like to see: <a href="mailto:elmershan7878@gmail.com">elmershan7878@gmail.com</a></p>
