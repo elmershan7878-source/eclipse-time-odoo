@@ -1,0 +1,1489 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* eclipse_risk_monitor
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 18.0-20261112\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-11-24 06:34+0000\n"
+"PO-Revision-Date: 2026-11-24 06:34+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: eclipse_risk_monitor
+#. odoo-python
+#: code:addons/eclipse_risk_monitor/models/risk_engine.py:0
+msgid ""
+"%(n)s active scheduled actions are overdue; the most delayed (%(name)s) is "
+"%(hours)s h late."
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#. odoo-python
+#: code:addons/eclipse_risk_monitor/models/risk_engine.py:0
+msgid "%(n)s customer invoice(s) overdue by more than %(d)s days"
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#. odoo-python
+#: code:addons/eclipse_risk_monitor/models/risk_engine.py:0
+msgid "%(n)s electronic invoice(s) %(label)s"
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#. odoo-python
+#: code:addons/eclipse_risk_monitor/models/risk_engine.py:0
+msgid ""
+"%(n)s outgoing deliveries are past their scheduled date by more than %(g)s "
+"day(s) and not done (oldest: %(days)s days). Examples: %(refs)s."
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#. odoo-python
+#: code:addons/eclipse_risk_monitor/models/risk_engine.py:0
+msgid ""
+"%(n)s outgoing email(s) failed in the last 24 h, %(inv)s of them about "
+"invoices."
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#. odoo-python
+#: code:addons/eclipse_risk_monitor/models/risk_engine.py:0
+msgid ""
+"%(n)s payment transaction(s) ended in error in the last 24 h (provider: "
+"%(p)s)."
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#. odoo-python
+#: code:addons/eclipse_risk_monitor/models/risk_engine.py:0
+msgid ""
+"%(n)s posted customer invoice(s) are more than %(d)s days past due, for "
+"%(amount).2f %(cur)s outstanding."
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#. odoo-python
+#: code:addons/eclipse_risk_monitor/models/risk_engine.py:0
+msgid ""
+"%(n)s product/location line(s) have a negative on-hand quantity. Examples: "
+"%(items)s."
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#. odoo-python
+#: code:addons/eclipse_risk_monitor/models/risk_engine.py:0
+msgid ""
+"%(v)s sales orders confirmed on %(day)s against an average of %(avg).1f on "
+"the same weekday of the previous 4 weeks (-%(pct)s %%)."
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#. odoo-python
+#: code:addons/eclipse_risk_monitor/models/risk_engine.py:0
+msgid "%s delivery order(s) late"
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#. odoo-python
+#: code:addons/eclipse_risk_monitor/models/risk_engine.py:0
+msgid "%s email(s) could not be sent in the last 24 h"
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#. odoo-python
+#: code:addons/eclipse_risk_monitor/models/risk_engine.py:0
+msgid "%s online payment(s) failed in the last 24 h"
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#. odoo-python
+#: code:addons/eclipse_risk_monitor/models/risk_engine.py:0
+msgid "%s scheduled actions are not being executed"
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#. odoo-python
+#: code:addons/eclipse_risk_monitor/models/risk_engine.py:0
+msgid "%s stock line(s) with negative quantity"
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#: model_terms:ir.ui.view,arch_db:eclipse_risk_monitor.digest_email
+msgid "<br/>compound"
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#: model_terms:ir.ui.view,arch_db:eclipse_risk_monitor.view_eclipse_risk_signal_form
+msgid ""
+"<span class=\"badge text-bg-danger ms-2\" invisible=\"not compound\">Compound risk</span>\n"
+"                            <span class=\"badge text-bg-warning ms-2\" invisible=\"not accelerating\">Accelerating</span>\n"
+"                            <span class=\"badge text-bg-success ms-2\" invisible=\"not verified\">Resolution verified</span>"
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#: model:ir.model.constraint,message:eclipse_risk_monitor.constraint_eclipse_risk_signal_fingerprint_unique
+msgid "A problem can only have one signal per company."
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#: model:ir.model.fields,field_description:eclipse_risk_monitor.field_eclipse_risk_signal__accelerating
+#: model_terms:ir.ui.view,arch_db:eclipse_risk_monitor.view_eclipse_risk_signal_kanban
+#: model_terms:ir.ui.view,arch_db:eclipse_risk_monitor.view_eclipse_risk_signal_search
+msgid "Accelerating"
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#: model:ir.model.fields,field_description:eclipse_risk_monitor.field_eclipse_risk_signal__message_needaction
+msgid "Action Needed"
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#: model:ir.model.fields,field_description:eclipse_risk_monitor.field_eclipse_risk_check__active
+msgid "Active"
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#: model:eclipse.risk.check,description:eclipse_risk_monitor.check_tech_cron
+msgid ""
+"Active scheduled actions with consecutive failures (Odoo deactivates them "
+"after 5 failures over 7 days) and scheduled actions overdue by more than one"
+" interval (minimum 1 hour). Three or more overdue actions are reported as a "
+"stopped cron worker (critical). Database-wide: reported in the main company."
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#: model:ir.model.fields,field_description:eclipse_risk_monitor.field_eclipse_risk_signal__activity_ids
+msgid "Activities"
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#: model:ir.model.fields,field_description:eclipse_risk_monitor.field_eclipse_risk_signal__activity_exception_decoration
+msgid "Activity Exception Decoration"
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#: model:ir.model.fields,field_description:eclipse_risk_monitor.field_eclipse_risk_signal__activity_state
+msgid "Activity State"
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#: model:ir.model.fields,field_description:eclipse_risk_monitor.field_eclipse_risk_signal__activity_type_icon
+msgid "Activity Type Icon"
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#: model:ir.model.fields,field_description:eclipse_risk_monitor.field_eclipse_risk_check__area
+#: model:ir.model.fields,field_description:eclipse_risk_monitor.field_eclipse_risk_signal__area
+#: model_terms:ir.ui.view,arch_db:eclipse_risk_monitor.view_eclipse_risk_signal_search
+msgid "Area"
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#: model:ir.model.fields,help:eclipse_risk_monitor.field_eclipse_risk_signal__accelerating
+msgid "At least 3 events in 24 h and 50 % more than the previous 24 h."
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#: model:ir.model.fields,field_description:eclipse_risk_monitor.field_eclipse_risk_signal__message_attachment_count
+msgid "Attachment Count"
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#: model:ir.model.fields,field_description:eclipse_risk_monitor.field_eclipse_risk_check__available
+msgid "Available"
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#: model:ir.model.fields,help:eclipse_risk_monitor.field_eclipse_risk_check__confidence
+msgid ""
+"Certainty of the rule: 1.0 for facts read from the database, lower for "
+"statistical deviations."
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#: model:ir.model.fields,field_description:eclipse_risk_monitor.field_eclipse_risk_signal__check_id
+#: model_terms:ir.ui.view,arch_db:eclipse_risk_monitor.view_eclipse_risk_check_form
+#: model_terms:ir.ui.view,arch_db:eclipse_risk_monitor.view_eclipse_risk_signal_search
+msgid "Check"
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#. odoo-python
+#: code:addons/eclipse_risk_monitor/models/risk_engine.py:0
+msgid ""
+"Check that the Odoo server runs with cron threads enabled and look in the "
+"server log for long-running or blocked jobs. Then confirm that this signal "
+"disappears at the next scan."
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#. odoo-python
+#: code:addons/eclipse_risk_monitor/models/risk_engine.py:0
+msgid ""
+"Check the order sources first (website, payment, connectors); only if they "
+"work, treat it as a commercial drop and alert sales."
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#. odoo-python
+#: code:addons/eclipse_risk_monitor/models/risk_engine.py:0
+msgid ""
+"Check the outgoing mail server and the recipient addresses, then retry the "
+"failed emails (Settings > Technical > Emails, filter \"Failed\"). Invoices "
+"that were not received are often paid late."
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#. odoo-python
+#: code:addons/eclipse_risk_monitor/models/risk_engine.py:0
+msgid ""
+"Check the payment provider configuration and the transaction messages; "
+"customers who could not pay may need to be contacted."
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#: model:ir.actions.act_window,name:eclipse_risk_monitor.action_eclipse_risk_check
+#: model:ir.ui.menu,name:eclipse_risk_monitor.menu_risk_checks
+#: model_terms:ir.ui.view,arch_db:eclipse_risk_monitor.view_eclipse_risk_check_list
+msgid "Checks"
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#: model:ir.model.fields,field_description:eclipse_risk_monitor.field_eclipse_risk_check__code
+msgid "Code"
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#: model:ir.model,name:eclipse_risk_monitor.model_res_company
+msgid "Companies"
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#: model:ir.model.fields,field_description:eclipse_risk_monitor.field_eclipse_risk_metric__company_id
+#: model:ir.model.fields,field_description:eclipse_risk_monitor.field_eclipse_risk_signal__company_id
+msgid "Company"
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#: model_terms:ir.ui.view,arch_db:eclipse_risk_monitor.view_eclipse_risk_signal_kanban
+msgid "Compound"
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#: model:ir.model.fields,field_description:eclipse_risk_monitor.field_eclipse_risk_signal__compound
+#: model_terms:ir.ui.view,arch_db:eclipse_risk_monitor.view_eclipse_risk_signal_search
+msgid "Compound risk"
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#: model:ir.model.fields,field_description:eclipse_risk_monitor.field_eclipse_risk_check__confidence
+#: model:ir.model.fields,field_description:eclipse_risk_monitor.field_eclipse_risk_signal__confidence
+msgid "Confidence"
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#: model:ir.model,name:eclipse_risk_monitor.model_res_config_settings
+msgid "Config Settings"
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#: model:ir.ui.menu,name:eclipse_risk_monitor.menu_risk_config
+msgid "Configuration"
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#. odoo-python
+#: code:addons/eclipse_risk_monitor/models/risk_engine.py:0
+msgid "Confirmed sales orders down %s %%"
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#: model:ir.model.fields,field_description:eclipse_risk_monitor.field_eclipse_risk_check__create_uid
+#: model:ir.model.fields,field_description:eclipse_risk_monitor.field_eclipse_risk_metric__create_uid
+#: model:ir.model.fields,field_description:eclipse_risk_monitor.field_eclipse_risk_signal__create_uid
+msgid "Created by"
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#: model:ir.model.fields,field_description:eclipse_risk_monitor.field_eclipse_risk_check__create_date
+#: model:ir.model.fields,field_description:eclipse_risk_monitor.field_eclipse_risk_metric__create_date
+#: model:ir.model.fields,field_description:eclipse_risk_monitor.field_eclipse_risk_signal__create_date
+msgid "Created on"
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#: model:ir.model.fields.selection,name:eclipse_risk_monitor.selection__eclipse_risk_check__area__customer
+#: model:ir.model.fields.selection,name:eclipse_risk_monitor.selection__eclipse_risk_signal__area__customer
+msgid "Customer"
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#: model:ir.actions.act_window,name:eclipse_risk_monitor.action_eclipse_risk_metric
+#: model:ir.ui.menu,name:eclipse_risk_monitor.menu_risk_metrics
+#: model_terms:ir.ui.view,arch_db:eclipse_risk_monitor.view_eclipse_risk_metric_graph
+#: model_terms:ir.ui.view,arch_db:eclipse_risk_monitor.view_eclipse_risk_metric_list
+#: model_terms:ir.ui.view,arch_db:eclipse_risk_monitor.view_eclipse_risk_metric_pivot
+msgid "Daily Metrics"
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#: model:ir.model,name:eclipse_risk_monitor.model_eclipse_risk_metric
+msgid "Daily Operational Metric"
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#: model:ir.model.fields,field_description:eclipse_risk_monitor.field_res_company__eclipse_risk_digest
+#: model:ir.model.fields,field_description:eclipse_risk_monitor.field_res_config_settings__eclipse_risk_digest
+msgid "Daily Risk Digest"
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#: model_terms:ir.ui.view,arch_db:eclipse_risk_monitor.res_config_settings_view_form
+msgid "Daily digest"
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#: model_terms:ir.ui.view,arch_db:eclipse_risk_monitor.res_config_settings_view_form
+msgid "Daily email with the open P0-P2 signals to the Risk Monitor managers."
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#: model:ir.model.fields,field_description:eclipse_risk_monitor.field_eclipse_risk_metric__day
+msgid "Day"
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#: model:ir.model.fields,help:eclipse_risk_monitor.field_eclipse_risk_check__grace_days
+msgid "Days of tolerance before something counts as late or overdue."
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#: model:ir.model.fields,field_description:eclipse_risk_monitor.field_eclipse_risk_check__description
+msgid "Description"
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#: model:ir.model.fields.selection,name:eclipse_risk_monitor.selection__eclipse_risk_signal__state__dismissed
+msgid "Dismissed"
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#: model:ir.model.fields,field_description:eclipse_risk_monitor.field_eclipse_risk_check__display_name
+#: model:ir.model.fields,field_description:eclipse_risk_monitor.field_eclipse_risk_metric__display_name
+#: model:ir.model.fields,field_description:eclipse_risk_monitor.field_eclipse_risk_signal__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#: model_terms:ir.ui.view,arch_db:eclipse_risk_monitor.res_config_settings_view_form
+msgid "Download JSON"
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#: model_terms:ir.ui.view,arch_db:eclipse_risk_monitor.res_config_settings_view_form
+msgid ""
+"Downloads a JSON file with the daily metrics and anonymous signal summaries "
+"of the current company (last 90 days). Nothing is sent anywhere: the file is"
+" generated only when you click."
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#: model:eclipse.risk.check,name:eclipse_risk_monitor.check_cus_sales
+msgid "Drop in confirmed sales orders"
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#. odoo-python
+#: code:addons/eclipse_risk_monitor/models/risk_engine.py:0
+msgid "E-invoicing documents (%(fmt)s) for: %(refs)s."
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#: model:ir.model.fields.selection,name:eclipse_risk_monitor.selection__eclipse_risk_metric__metric__einvoice_errors
+msgid "E-invoicing documents with errors"
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#. odoo-python
+#: code:addons/eclipse_risk_monitor/models/risk_engine.py:0
+msgid ""
+"Either demand dropped or orders are not reaching Odoo (website, payment "
+"provider, integrations or emails failing). Look at the related signals "
+"before deciding."
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#: model:eclipse.risk.check,name:eclipse_risk_monitor.check_fin_einvoice
+msgid "Electronic invoices rejected or blocked"
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#: model:eclipse.risk.check,name:eclipse_risk_monitor.check_tech_mail
+msgid "Emails that could not be sent"
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#: model:ir.model.fields,help:eclipse_risk_monitor.field_eclipse_risk_signal__occurrences
+msgid "Events counted by the check for this problem."
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#: model_terms:ir.ui.view,arch_db:eclipse_risk_monitor.res_config_settings_view_form
+msgid "Export (optional)"
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#: model:ir.model.fields.selection,name:eclipse_risk_monitor.selection__eclipse_risk_metric__metric__cron_failing
+msgid "Failing scheduled actions"
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#: model:ir.model.fields,field_description:eclipse_risk_monitor.field_eclipse_risk_signal__feedback
+msgid "Feedback"
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#: model:ir.model.fields.selection,name:eclipse_risk_monitor.selection__eclipse_risk_check__area__financial
+#: model:ir.model.fields.selection,name:eclipse_risk_monitor.selection__eclipse_risk_signal__area__financial
+msgid "Financial"
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#: model:ir.model.fields,field_description:eclipse_risk_monitor.field_eclipse_risk_signal__fingerprint
+msgid "Fingerprint"
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#: model:ir.model.fields,field_description:eclipse_risk_monitor.field_eclipse_risk_signal__first_seen
+msgid "First Seen"
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#: model:ir.model.fields,field_description:eclipse_risk_monitor.field_eclipse_risk_signal__message_follower_ids
+msgid "Followers"
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#: model:ir.model.fields,field_description:eclipse_risk_monitor.field_eclipse_risk_signal__message_partner_ids
+msgid "Followers (Partners)"
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#: model:ir.model.fields,help:eclipse_risk_monitor.field_eclipse_risk_signal__activity_type_icon
+msgid "Font awesome icon e.g. fa-tasks"
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#. odoo-python
+#: code:addons/eclipse_risk_monitor/models/risk_engine.py:0
+msgid ""
+"Goods were delivered or consumed before their receipt was recorded, or moves"
+" were validated from the wrong location. Availability and valuation become "
+"unreliable."
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#: model:ir.model.fields,field_description:eclipse_risk_monitor.field_eclipse_risk_check__grace_days
+msgid "Grace Days"
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#: model_terms:ir.ui.view,arch_db:eclipse_risk_monitor.view_eclipse_risk_metric_search
+#: model_terms:ir.ui.view,arch_db:eclipse_risk_monitor.view_eclipse_risk_signal_search
+msgid "Group By"
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#: model:ir.model.fields,field_description:eclipse_risk_monitor.field_eclipse_risk_signal__has_message
+msgid "Has Message"
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#: model:ir.model.fields,field_description:eclipse_risk_monitor.field_eclipse_risk_check__id
+#: model:ir.model.fields,field_description:eclipse_risk_monitor.field_eclipse_risk_metric__id
+#: model:ir.model.fields,field_description:eclipse_risk_monitor.field_eclipse_risk_signal__id
+msgid "ID"
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#: model:ir.model.fields,field_description:eclipse_risk_monitor.field_eclipse_risk_signal__activity_exception_icon
+msgid "Icon"
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#: model:ir.model.fields,help:eclipse_risk_monitor.field_eclipse_risk_signal__activity_exception_icon
+msgid "Icon to indicate an exception activity."
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#: model:ir.model.fields,help:eclipse_risk_monitor.field_eclipse_risk_signal__message_needaction
+msgid "If checked, new messages require your attention."
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#: model:ir.model.fields,help:eclipse_risk_monitor.field_eclipse_risk_signal__message_has_error
+msgid "If checked, some messages have a delivery error."
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#: model:ir.model.fields.selection,name:eclipse_risk_monitor.selection__eclipse_risk_signal__state__acknowledged
+msgid "In progress"
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#. odoo-python
+#: code:addons/eclipse_risk_monitor/models/risk_engine.py:0
+msgid ""
+"Invoices remain unpaid after their due date. Check whether reminders are "
+"sent and whether invoice emails are delivered."
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#: model:ir.model.fields,field_description:eclipse_risk_monitor.field_eclipse_risk_signal__message_is_follower
+msgid "Is Follower"
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#: model_terms:ir.ui.view,arch_db:eclipse_risk_monitor.view_eclipse_risk_metric_search
+msgid "Last 30 days"
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#: model:ir.model.fields,field_description:eclipse_risk_monitor.field_eclipse_risk_check__last_error
+msgid "Last Error"
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#: model:ir.model.fields,field_description:eclipse_risk_monitor.field_eclipse_risk_check__last_run
+msgid "Last Run"
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#: model:ir.model.fields,field_description:eclipse_risk_monitor.field_eclipse_risk_signal__last_seen
+msgid "Last Seen"
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#: model:ir.model.fields,field_description:eclipse_risk_monitor.field_eclipse_risk_check__write_uid
+#: model:ir.model.fields,field_description:eclipse_risk_monitor.field_eclipse_risk_metric__write_uid
+#: model:ir.model.fields,field_description:eclipse_risk_monitor.field_eclipse_risk_signal__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#: model:ir.model.fields,field_description:eclipse_risk_monitor.field_eclipse_risk_check__write_date
+#: model:ir.model.fields,field_description:eclipse_risk_monitor.field_eclipse_risk_metric__write_date
+#: model:ir.model.fields,field_description:eclipse_risk_monitor.field_eclipse_risk_signal__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#: model:eclipse.risk.check,name:eclipse_risk_monitor.check_ops_late
+msgid "Late deliveries"
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#: model:ir.model.fields.selection,name:eclipse_risk_monitor.selection__eclipse_risk_metric__metric__late_deliveries
+msgid "Late outgoing deliveries"
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#. odoo-python
+#: code:addons/eclipse_risk_monitor/models/risk_engine.py:0
+msgid "Latest Veri*Factu record of %(n)s invoice(s): %(refs)s."
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#: model:ir.model.fields,help:eclipse_risk_monitor.field_eclipse_risk_check__weight
+msgid ""
+"Learned adjustment from user feedback: +0.05 per \"useful\", -0.05 per \"not"
+" useful\", bounded to +/-0.20."
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#: model_terms:ir.ui.view,arch_db:eclipse_risk_monitor.view_eclipse_risk_signal_form
+msgid ""
+"Lowers the weight of this check (-0.05, min -0.20) and hides the signal."
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#: model:ir.model.fields,help:eclipse_risk_monitor.field_eclipse_risk_check__threshold
+msgid "Main threshold of the check (meaning shown in the description)."
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#: model:res.groups,name:eclipse_risk_monitor.group_risk_manager
+msgid "Manager: configure checks and settings"
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#: model:ir.model.fields,field_description:eclipse_risk_monitor.field_eclipse_risk_signal__message_has_error
+msgid "Message Delivery error"
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#: model:ir.model.fields,field_description:eclipse_risk_monitor.field_eclipse_risk_signal__message_ids
+msgid "Messages"
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#: model:ir.model.fields,field_description:eclipse_risk_monitor.field_eclipse_risk_metric__metric
+#: model_terms:ir.ui.view,arch_db:eclipse_risk_monitor.view_eclipse_risk_metric_search
+msgid "Metric"
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#. odoo-python
+#: code:addons/eclipse_risk_monitor/models/risk_engine.py:0
+msgid "Most frequent error (%(count)s): %(reason)s"
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#: model:ir.model.fields,field_description:eclipse_risk_monitor.field_eclipse_risk_signal__my_activity_date_deadline
+msgid "My Activity Deadline"
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#: model_terms:ir.ui.view,arch_db:eclipse_risk_monitor.view_eclipse_risk_signal_search
+msgid "My signals"
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#: model:ir.model.fields,field_description:eclipse_risk_monitor.field_eclipse_risk_check__name
+#: model:ir.model.fields,field_description:eclipse_risk_monitor.field_eclipse_risk_signal__name
+msgid "Name"
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#: model:eclipse.risk.check,name:eclipse_risk_monitor.check_ops_negstock
+msgid "Negative stock"
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#: model:ir.model.fields.selection,name:eclipse_risk_monitor.selection__eclipse_risk_metric__metric__negative_quants
+msgid "Negative stock lines"
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#: model:ir.model.fields,field_description:eclipse_risk_monitor.field_eclipse_risk_signal__activity_date_deadline
+msgid "Next Activity Deadline"
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#: model:ir.model.fields,field_description:eclipse_risk_monitor.field_eclipse_risk_signal__activity_summary
+msgid "Next Activity Summary"
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#: model:ir.model.fields,field_description:eclipse_risk_monitor.field_eclipse_risk_signal__activity_type_id
+msgid "Next Activity Type"
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#: model_terms:ir.ui.view,arch_db:eclipse_risk_monitor.digest_email
+msgid "Next step"
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#. odoo-python
+#: code:addons/eclipse_risk_monitor/models/risk_engine.py:0
+msgid "No longer detected by the check at %(date)s UTC: resolution verified."
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#: model_terms:ir.actions.act_window,help:eclipse_risk_monitor.action_eclipse_risk_signal
+msgid "No operational problem detected"
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#: model:ir.model.fields.selection,name:eclipse_risk_monitor.selection__eclipse_risk_signal__feedback__not_useful
+msgid "Not useful"
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#: model_terms:ir.ui.view,arch_db:eclipse_risk_monitor.view_eclipse_risk_signal_form
+msgid "Not useful / dismiss"
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#: model:ir.model.fields,field_description:eclipse_risk_monitor.field_eclipse_risk_signal__notified
+msgid "Notified"
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#: model:ir.model.fields,field_description:eclipse_risk_monitor.field_eclipse_risk_signal__message_needaction_counter
+msgid "Number of Actions"
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#: model:ir.model.fields,field_description:eclipse_risk_monitor.field_eclipse_risk_signal__message_has_error_counter
+msgid "Number of errors"
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#: model:ir.model.fields,help:eclipse_risk_monitor.field_eclipse_risk_signal__message_needaction_counter
+msgid "Number of messages requiring action"
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#: model:ir.model.fields,help:eclipse_risk_monitor.field_eclipse_risk_signal__message_has_error_counter
+msgid "Number of messages with delivery error"
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#: model:ir.model.fields,field_description:eclipse_risk_monitor.field_eclipse_risk_signal__occurrences
+msgid "Occurrences"
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#: model:ir.model.fields,field_description:eclipse_risk_monitor.field_eclipse_risk_signal__occurrences_24h
+msgid "Occurrences 24H"
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#: model:ir.model.fields,field_description:eclipse_risk_monitor.field_eclipse_risk_signal__occurrences_prev_24h
+msgid "Occurrences Prev 24H"
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#: model:ir.model.constraint,message:eclipse_risk_monitor.constraint_eclipse_risk_metric_metric_day_unique
+msgid "One value per metric, day and company."
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#: model:eclipse.risk.check,name:eclipse_risk_monitor.check_fin_payment
+msgid "Online payments failing"
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#. odoo-python
+#: code:addons/eclipse_risk_monitor/models/risk_engine.py:0
+msgid "Only Risk Monitor managers can do this."
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#. odoo-python
+#: code:addons/eclipse_risk_monitor/models/risk_signal.py:0
+msgid "Only open signals can be taken in charge."
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#: model:ir.model.fields.selection,name:eclipse_risk_monitor.selection__eclipse_risk_signal__state__open
+msgid "Open"
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#. odoo-python
+#: code:addons/eclipse_risk_monitor/models/risk_engine.py:0
+msgid ""
+"Open Inventory > Deliveries filtered on \"Late\", check availability, "
+"validate what was shipped and inform the affected customers."
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#. odoo-python
+#: code:addons/eclipse_risk_monitor/models/risk_engine.py:0
+msgid ""
+"Open each invoice, read the AEAT error on its Veri*Factu document, correct "
+"the data and send it again. Rejected records are not registered with the tax"
+" agency."
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#: model_terms:ir.ui.view,arch_db:eclipse_risk_monitor.digest_email
+msgid "Open operational signals for"
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#: model_terms:ir.ui.view,arch_db:eclipse_risk_monitor.view_eclipse_risk_signal_form
+msgid "Open related record"
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#: model_terms:ir.ui.view,arch_db:eclipse_risk_monitor.view_eclipse_risk_check_form
+#: model_terms:ir.ui.view,arch_db:eclipse_risk_monitor.view_eclipse_risk_check_list
+msgid "Open signals"
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#. odoo-python
+#: code:addons/eclipse_risk_monitor/models/risk_engine.py:0
+msgid ""
+"Open the invoices, read the electronic invoicing error and process them "
+"again; if they are only waiting, check the scheduled action that sends them."
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#. odoo-python
+#: code:addons/eclipse_risk_monitor/models/risk_engine.py:0
+msgid ""
+"Open the scheduled action, use \"Run Manually\" to see the error, check the "
+"server log around the failure time and fix the cause before it gets "
+"deactivated."
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#: model:ir.model.fields.selection,name:eclipse_risk_monitor.selection__eclipse_risk_check__area__operational
+#: model:ir.model.fields.selection,name:eclipse_risk_monitor.selection__eclipse_risk_signal__area__operational
+msgid "Operational"
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#: model:ir.module.category,name:eclipse_risk_monitor.module_category_risk_monitor
+#: model_terms:ir.ui.view,arch_db:eclipse_risk_monitor.res_config_settings_view_form
+msgid "Operational Risk Monitor"
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#: model:ir.model,name:eclipse_risk_monitor.model_eclipse_risk_engine
+msgid "Operational Risk Monitor Engine"
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#: model:eclipse.risk.check,description:eclipse_risk_monitor.check_tech_mail
+msgid ""
+"Outgoing emails in \"failed\" state created in the last 24 h. Severity rises"
+" when the count reaches the threshold or when invoice emails are affected. "
+"Compared with the previous 24 h to detect acceleration. Email addresses and "
+"phone numbers are removed from error texts."
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#: model:eclipse.risk.check,description:eclipse_risk_monitor.check_ops_late
+msgid ""
+"Outgoing transfers not done whose scheduled date is more than \"grace days\""
+" in the past, when their number reaches the threshold (requires Inventory)."
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#: model:eclipse.risk.check,name:eclipse_risk_monitor.check_fin_ar
+#: model:ir.model.fields.selection,name:eclipse_risk_monitor.selection__eclipse_risk_metric__metric__ar_overdue_count
+msgid "Overdue customer invoices"
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#: model:ir.model.fields.selection,name:eclipse_risk_monitor.selection__eclipse_risk_metric__metric__ar_overdue_amount
+msgid "Overdue receivables (company currency)"
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#. odoo-python
+#: code:addons/eclipse_risk_monitor/models/risk_engine.py:0
+msgid ""
+"Overdue receivables grew %(pct)s %% in 7 days (from %(old).2f %(cur)s)."
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#: model:ir.model.fields.selection,name:eclipse_risk_monitor.selection__eclipse_risk_metric__metric__cron_overdue
+msgid "Overdue scheduled actions"
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#: model:ir.model.fields.selection,name:eclipse_risk_monitor.selection__eclipse_risk_signal__priority__p0
+msgid "P0 - Critical"
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#: model_terms:ir.ui.view,arch_db:eclipse_risk_monitor.view_eclipse_risk_signal_search
+msgid "P0 / P1"
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#: model_terms:ir.ui.view,arch_db:eclipse_risk_monitor.digest_email
+msgid "P0,"
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#: model:ir.model.fields.selection,name:eclipse_risk_monitor.selection__eclipse_risk_signal__priority__p1
+msgid "P1 - High"
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#: model_terms:ir.ui.view,arch_db:eclipse_risk_monitor.digest_email
+msgid "P1,"
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#: model:ir.model.fields.selection,name:eclipse_risk_monitor.selection__eclipse_risk_signal__priority__p2
+msgid "P2 - Medium"
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#: model_terms:ir.ui.view,arch_db:eclipse_risk_monitor.digest_email
+msgid "P2."
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#: model:ir.model.fields.selection,name:eclipse_risk_monitor.selection__eclipse_risk_signal__priority__p3
+msgid "P3 - Low"
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#: model:ir.model.fields,field_description:eclipse_risk_monitor.field_eclipse_risk_metric__partial
+msgid "Partial"
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#: model:ir.model.fields.selection,name:eclipse_risk_monitor.selection__eclipse_risk_metric__metric__payment_errors_24h
+msgid "Payment transactions in error (24 h)"
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#: model:eclipse.risk.check,description:eclipse_risk_monitor.check_fin_payment
+msgid ""
+"Payment transactions that ended in error in the last 24 h, compared with the"
+" previous 24 h (requires the payment app)."
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#: model:eclipse.risk.check,description:eclipse_risk_monitor.check_fin_ar
+msgid ""
+"Posted customer invoices unpaid more than \"grace days\" after their due "
+"date, when the outstanding amount reaches the threshold (company currency). "
+"Severity rises when the overdue amount grew 20 % or more in 7 days."
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#: model:ir.model.fields,field_description:eclipse_risk_monitor.field_eclipse_risk_signal__priority
+#: model_terms:ir.ui.view,arch_db:eclipse_risk_monitor.digest_email
+#: model_terms:ir.ui.view,arch_db:eclipse_risk_monitor.view_eclipse_risk_signal_search
+msgid "Priority"
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#: model:ir.model.fields,field_description:eclipse_risk_monitor.field_eclipse_risk_signal__cause
+#: model_terms:ir.ui.view,arch_db:eclipse_risk_monitor.view_eclipse_risk_signal_form
+msgid "Probable cause"
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#: model:ir.model.fields,field_description:eclipse_risk_monitor.field_eclipse_risk_signal__problem
+msgid "Problem"
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#: model:eclipse.risk.check,description:eclipse_risk_monitor.check_ops_negstock
+msgid ""
+"Product quantities below zero in internal locations (requires Inventory)."
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#: model_terms:ir.ui.view,arch_db:eclipse_risk_monitor.view_eclipse_risk_signal_form
+msgid "Raises the weight of this check (+0.05, max +0.20)."
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#: model:ir.model.fields,help:eclipse_risk_monitor.field_res_company__eclipse_risk_user_id
+#: model:ir.model.fields,help:eclipse_risk_monitor.field_res_config_settings__eclipse_risk_user_id
+#: model_terms:ir.ui.view,arch_db:eclipse_risk_monitor.res_config_settings_view_form
+msgid "Receives a to-do activity for every new P0/P1 signal of this company."
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#: model:ir.model.fields,field_description:eclipse_risk_monitor.field_eclipse_risk_signal__recommendation
+#: model_terms:ir.ui.view,arch_db:eclipse_risk_monitor.view_eclipse_risk_signal_form
+msgid "Recommended next step"
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#: model:ir.model.fields,help:eclipse_risk_monitor.field_eclipse_risk_signal__compound
+msgid "Related open problems exist in other areas in the last 48 h."
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#: model:ir.model.fields,field_description:eclipse_risk_monitor.field_eclipse_risk_signal__related_signal_ids
+#: model_terms:ir.ui.view,arch_db:eclipse_risk_monitor.view_eclipse_risk_signal_form
+msgid "Related signals"
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#: model_terms:ir.ui.view,arch_db:eclipse_risk_monitor.view_eclipse_risk_signal_form
+msgid "Reopen"
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#: model:ir.model.fields,field_description:eclipse_risk_monitor.field_eclipse_risk_signal__reopen_count
+msgid "Reopen Count"
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#: model:ir.model.fields,field_description:eclipse_risk_monitor.field_eclipse_risk_check__required_model
+msgid "Required Model"
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#: model:ir.model.fields,field_description:eclipse_risk_monitor.field_eclipse_risk_signal__res_id
+msgid "Res"
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#: model:ir.model.fields,field_description:eclipse_risk_monitor.field_eclipse_risk_signal__res_model
+msgid "Res Model"
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#: model_terms:ir.ui.view,arch_db:eclipse_risk_monitor.view_eclipse_risk_check_form
+msgid "Reset learned weight"
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#: model:ir.model.fields,field_description:eclipse_risk_monitor.field_eclipse_risk_signal__verified
+#: model_terms:ir.ui.view,arch_db:eclipse_risk_monitor.view_eclipse_risk_signal_search
+msgid "Resolution verified"
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#: model:ir.model.fields.selection,name:eclipse_risk_monitor.selection__eclipse_risk_signal__state__resolved
+msgid "Resolved"
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#: model:ir.model.fields,field_description:eclipse_risk_monitor.field_eclipse_risk_signal__resolved_on
+msgid "Resolved On"
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#. odoo-python
+#: code:addons/eclipse_risk_monitor/models/risk_engine.py:0
+msgid "Resolved: no longer detected."
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#: model:ir.model.fields,field_description:eclipse_risk_monitor.field_eclipse_risk_signal__user_id
+#: model_terms:ir.ui.view,arch_db:eclipse_risk_monitor.digest_email
+#: model_terms:ir.ui.view,arch_db:eclipse_risk_monitor.res_config_settings_view_form
+msgid "Responsible"
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#: model:ir.model.fields,field_description:eclipse_risk_monitor.field_eclipse_risk_signal__activity_user_id
+msgid "Responsible User"
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#. odoo-python
+#: code:addons/eclipse_risk_monitor/models/risk_engine.py:0
+msgid ""
+"Review the aged receivable report, contact the largest debtors first and "
+"make sure invoice emails and reminders reach the customers."
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#. odoo-python
+#: code:addons/eclipse_risk_monitor/models/risk_engine.py:0
+msgid ""
+"Review these products, correct them with an inventory adjustment and fix the"
+" receipt or delivery flow that caused it."
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#: model:ir.model,name:eclipse_risk_monitor.model_eclipse_risk_check
+msgid "Risk Check"
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#: model:ir.ui.menu,name:eclipse_risk_monitor.menu_risk_root
+#: model_terms:ir.ui.view,arch_db:eclipse_risk_monitor.res_config_settings_view_form
+msgid "Risk Monitor"
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#: model:ir.model.fields,field_description:eclipse_risk_monitor.field_res_company__eclipse_risk_user_id
+#: model:ir.model.fields,field_description:eclipse_risk_monitor.field_res_config_settings__eclipse_risk_user_id
+msgid "Risk Monitor Responsible"
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#: model:ir.actions.server,name:eclipse_risk_monitor.ir_cron_risk_digest_ir_actions_server
+msgid "Risk Monitor: daily digest"
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#: model:ir.actions.server,name:eclipse_risk_monitor.ir_cron_risk_scan_ir_actions_server
+msgid "Risk Monitor: scan"
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#: model:ir.model,name:eclipse_risk_monitor.model_eclipse_risk_signal
+#: model_terms:ir.ui.view,arch_db:eclipse_risk_monitor.view_eclipse_risk_signal_form
+msgid "Risk Signal"
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#: model:ir.actions.act_window,name:eclipse_risk_monitor.action_eclipse_risk_signal
+#: model_terms:ir.ui.view,arch_db:eclipse_risk_monitor.view_eclipse_risk_signal_list
+msgid "Risk Signals"
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#. odoo-python
+#: code:addons/eclipse_risk_monitor/models/risk_engine.py:0
+msgid "Run it manually once and check the server log."
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#: model_terms:ir.ui.view,arch_db:eclipse_risk_monitor.res_config_settings_view_form
+msgid "Run the checks now"
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#: model:ir.model.fields.selection,name:eclipse_risk_monitor.selection__eclipse_risk_metric__metric__sales_orders_confirmed
+msgid "Sales orders confirmed (previous day)"
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#: model:eclipse.risk.check,description:eclipse_risk_monitor.check_cus_sales
+msgid ""
+"Sales orders confirmed the previous day (UTC) compared with the average of "
+"the same weekday over the 4 previous weeks. Reported when the drop reaches "
+"the threshold (%) and the average is at least 5 orders. Statistical rule: "
+"certainty 0.7 (requires Sales)."
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#: model_terms:ir.ui.view,arch_db:eclipse_risk_monitor.res_config_settings_view_form
+msgid "Scan now"
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#: model_terms:ir.ui.view,arch_db:eclipse_risk_monitor.res_config_settings_view_form
+msgid ""
+"Scans the current company immediately (the checks also run every hour)."
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#. odoo-python
+#: code:addons/eclipse_risk_monitor/models/risk_engine.py:0
+msgid "Scheduled action failing: %s"
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#. odoo-python
+#: code:addons/eclipse_risk_monitor/models/risk_engine.py:0
+msgid "Scheduled action overdue: %s"
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#. odoo-python
+#: code:addons/eclipse_risk_monitor/models/risk_engine.py:0
+msgid ""
+"Scheduled actions are not being processed: the cron worker may be stopped or"
+" saturated (e.g. max_cron_threads = 0, a long-running job blocking the "
+"queue, or the server was down). Emails, e-invoices and other automated "
+"processes wait until it runs again."
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#: model:eclipse.risk.check,name:eclipse_risk_monitor.check_tech_cron
+msgid "Scheduled actions failing or not running"
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#: model:ir.model.fields,field_description:eclipse_risk_monitor.field_eclipse_risk_signal__score
+#: model_terms:ir.ui.view,arch_db:eclipse_risk_monitor.view_eclipse_risk_signal_form
+msgid "Score"
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#: model_terms:ir.ui.view,arch_db:eclipse_risk_monitor.view_eclipse_risk_signal_kanban
+msgid "Score (0-100)"
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#: model:ir.model.fields,field_description:eclipse_risk_monitor.field_eclipse_risk_signal__score_explanation
+msgid "Score Explanation"
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#. odoo-python
+#: code:addons/eclipse_risk_monitor/models/risk_engine.py:0
+msgid "See the error on the Veri*Factu document."
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#: model:ir.model.fields,help:eclipse_risk_monitor.field_res_company__eclipse_risk_digest
+#: model:ir.model.fields,help:eclipse_risk_monitor.field_res_config_settings__eclipse_risk_digest
+msgid ""
+"Send a daily email with the open P0-P2 signals to the Risk Monitor managers "
+"of this company."
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#: model_terms:ir.ui.view,arch_db:eclipse_risk_monitor.digest_email
+msgid ""
+"Sent by Operational Risk Monitor. Signals disappear\n"
+"                from this digest automatically once the check no longer detects the problem."
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#: model:ir.model.fields,field_description:eclipse_risk_monitor.field_eclipse_risk_check__sequence
+msgid "Sequence"
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#: model:ir.actions.act_window,name:eclipse_risk_monitor.action_eclipse_risk_settings
+#: model:ir.ui.menu,name:eclipse_risk_monitor.menu_risk_settings
+msgid "Settings"
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#: model:ir.model.fields,field_description:eclipse_risk_monitor.field_eclipse_risk_signal__severity
+msgid "Severity"
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#. odoo-python
+#: code:addons/eclipse_risk_monitor/models/risk_engine.py:0
+msgid ""
+"Severity %(sev)s/4: %(sev_pts)s pts · occurrences %(occ)s: %(occ_pts)s pts ·"
+" rule certainty %(conf).2f: %(conf_pts)s pts · learned weight %(weight)+.2f:"
+" %(w_pts)s pts · related areas %(areas)s: +%(cb)s · accelerating: +%(tb)s · "
+"total %(score)s/100"
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#: model_terms:ir.ui.view,arch_db:eclipse_risk_monitor.digest_email
+msgid "Signal"
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#: model:ir.model.fields,field_description:eclipse_risk_monitor.field_eclipse_risk_check__signal_count
+msgid "Signal Count"
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#: model:ir.ui.menu,name:eclipse_risk_monitor.menu_risk_signals
+#: model_terms:ir.ui.view,arch_db:eclipse_risk_monitor.view_eclipse_risk_signal_graph
+#: model_terms:ir.ui.view,arch_db:eclipse_risk_monitor.view_eclipse_risk_signal_pivot
+msgid "Signals"
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#: model:eclipse.risk.check,description:eclipse_risk_monitor.check_fin_einvoice
+msgid "Spain Veri*Factu: invoices whose latest record (last 7 days) was rejected or registered with errors by the AEAT (requires l10n_es_edi_verifactu). Electronic invoicing based on account_edi (for example Spain SII): documents blocked by an error, or waiting to be sent for more than 24 h. TicketBAI and FacturaE do not use account_edi and are not covered."
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#: model:ir.model.fields,help:eclipse_risk_monitor.field_eclipse_risk_signal__fingerprint
+msgid "Stable key of the problem: same problem, same signal."
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#: model:ir.model.fields,field_description:eclipse_risk_monitor.field_eclipse_risk_signal__state
+msgid "State"
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#: model:ir.model.fields,field_description:eclipse_risk_monitor.field_eclipse_risk_signal__state_sequence
+msgid "State Sequence"
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#: model_terms:ir.ui.view,arch_db:eclipse_risk_monitor.view_eclipse_risk_signal_search
+msgid "Status"
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#: model:ir.model.fields,help:eclipse_risk_monitor.field_eclipse_risk_signal__activity_state
+msgid ""
+"Status based on activities\n"
+"Overdue: Due date is already passed\n"
+"Today: Activity date is today\n"
+"Planned: Future activities."
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#: model_terms:ir.ui.view,arch_db:eclipse_risk_monitor.view_eclipse_risk_signal_form
+msgid "Take in charge"
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#: model:ir.model.fields.selection,name:eclipse_risk_monitor.selection__eclipse_risk_check__area__technical
+#: model:ir.model.fields.selection,name:eclipse_risk_monitor.selection__eclipse_risk_signal__area__technical
+msgid "Technical"
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#: model:ir.model.fields,help:eclipse_risk_monitor.field_eclipse_risk_check__required_model
+msgid ""
+"Technical model this check needs. When the related app is not installed the "
+"check is skipped."
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#: model:ir.model.constraint,message:eclipse_risk_monitor.constraint_eclipse_risk_check_code_unique
+msgid "The check code must be unique."
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#: model:ir.model.fields,help:eclipse_risk_monitor.field_eclipse_risk_signal__verified
+msgid ""
+"The check ran again after the problem was handled and no longer detected it."
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#: model_terms:ir.actions.act_window,help:eclipse_risk_monitor.action_eclipse_risk_signal
+msgid ""
+"The checks run every hour. Each detected problem appears here with its priority,\n"
+"                probable cause and next step, and disappears automatically once it is solved."
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#: model:ir.model.fields,help:eclipse_risk_monitor.field_eclipse_risk_metric__partial
+msgid "The day is not over: the value can still change."
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#. odoo-python
+#: code:addons/eclipse_risk_monitor/models/risk_engine.py:0
+msgid "The documents are queued but the sending job did not complete."
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#. odoo-python
+#: code:addons/eclipse_risk_monitor/models/risk_engine.py:0
+msgid ""
+"The job raises an error every time it runs. Odoo deactivates a scheduled "
+"action after 5 consecutive failures spread over at least 7 days; from then "
+"on the process it automates stops without further warning."
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#. odoo-python
+#: code:addons/eclipse_risk_monitor/models/risk_engine.py:0
+msgid "The job was skipped or is blocked by another job."
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#. odoo-python
+#: code:addons/eclipse_risk_monitor/models/risk_engine.py:0
+msgid ""
+"The payment provider refused or failed the transactions: credentials, "
+"expired keys, 3-D Secure or a provider incident."
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#. odoo-python
+#: code:addons/eclipse_risk_monitor/models/risk_signal.py:0
+msgid "The related record no longer exists."
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#. odoo-python
+#: code:addons/eclipse_risk_monitor/models/risk_engine.py:0
+msgid ""
+"The scheduled action '%(name)s' failed %(n)s consecutive time(s) since "
+"%(since)s UTC."
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#. odoo-python
+#: code:addons/eclipse_risk_monitor/models/risk_engine.py:0
+msgid "The scheduled action '%(name)s' should have run %(hours)s h ago."
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#. odoo-python
+#: code:addons/eclipse_risk_monitor/models/risk_signal.py:0
+msgid "This signal is not linked to a single record."
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#: model:ir.model.fields,field_description:eclipse_risk_monitor.field_eclipse_risk_check__threshold
+msgid "Threshold"
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#: model_terms:ir.ui.view,arch_db:eclipse_risk_monitor.view_eclipse_risk_signal_search
+msgid "To handle"
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#: model:ir.model.fields,help:eclipse_risk_monitor.field_eclipse_risk_signal__activity_exception_decoration
+msgid "Type of the exception activity on record."
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#. odoo-python
+#: code:addons/eclipse_risk_monitor/models/risk_engine.py:0
+msgid ""
+"Typical causes: products not available or not reserved, a blocked picking "
+"step, or deliveries that were shipped but not validated in Odoo."
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#: model:ir.model.fields.selection,name:eclipse_risk_monitor.selection__eclipse_risk_metric__metric__mail_exceptions_24h
+msgid "Undelivered emails (24 h)"
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#: model:ir.model.fields.selection,name:eclipse_risk_monitor.selection__eclipse_risk_signal__feedback__useful
+#: model_terms:ir.ui.view,arch_db:eclipse_risk_monitor.view_eclipse_risk_signal_form
+msgid "Useful"
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#: model:res.groups,name:eclipse_risk_monitor.group_risk_user
+msgid "User: see and handle signals"
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#: model:ir.model.fields,field_description:eclipse_risk_monitor.field_eclipse_risk_metric__value
+msgid "Value"
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#. odoo-python
+#: code:addons/eclipse_risk_monitor/models/risk_engine.py:0
+msgid "Veri*Factu: %(n)s invoice record(s) %(state)s by the AEAT"
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#: model:ir.model.fields,field_description:eclipse_risk_monitor.field_eclipse_risk_check__weight
+msgid "Weight"
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#: model_terms:ir.ui.view,arch_db:eclipse_risk_monitor.view_eclipse_risk_signal_form
+msgid "What is happening"
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#: model_terms:ir.ui.view,arch_db:eclipse_risk_monitor.view_eclipse_risk_check_form
+msgid "What it checks"
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#: model_terms:ir.ui.view,arch_db:eclipse_risk_monitor.view_eclipse_risk_signal_form
+msgid "Why this priority"
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#. odoo-python
+#: code:addons/eclipse_risk_monitor/models/risk_engine.py:0
+msgid ""
+"[Risk Monitor] %(company)s: %(n)s open signal(s), %(p0)s P0 / %(p1)s P1"
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#. odoo-python
+#: code:addons/eclipse_risk_monitor/models/risk_engine.py:0
+msgid "blocked by an error"
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#: model_terms:ir.ui.view,arch_db:eclipse_risk_monitor.view_eclipse_risk_signal_kanban
+msgid "event(s)"
+msgstr ""
+
+#. module: eclipse_risk_monitor
+#. odoo-python
+#: code:addons/eclipse_risk_monitor/models/risk_engine.py:0
+msgid "waiting for more than 24 h"
+msgstr ""
