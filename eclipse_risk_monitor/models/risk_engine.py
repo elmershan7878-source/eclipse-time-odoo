@@ -62,11 +62,21 @@ class EclipseRiskEngine(models.AbstractModel):
 
     # ------------------------------------------------------------------ scans
     @api.model
+    def _company_lang(self, company):
+        """Texts of signals and digests are written in the company's language
+        (scheduled actions otherwise run in the language of their technical user)."""
+        lang = company.partner_id.lang
+        if lang and self.env['res.lang']._lang_get(lang):
+            return lang
+        return self.env.lang or 'en_US'
+
+    @api.model
     def _cron_scan(self):
         for company in self.env['res.company'].sudo().search([]):
             try:
                 with self.env.cr.savepoint():
-                    self.sudo().with_company(company)._scan_company(company)
+                    self.sudo().with_company(company).with_context(
+                        lang=self._company_lang(company))._scan_company(company)
             except Exception:
                 _logger.exception('Risk Monitor: scan failed for company %s', company.id)
 
@@ -217,19 +227,21 @@ class EclipseRiskEngine(models.AbstractModel):
             if not users:
                 continue
             counts = Counter(signals.mapped('priority'))
-            body = self.env['ir.qweb']._render('eclipse_risk_monitor.digest_email', {
-                'company': company, 'signals': signals, 'counts': counts,
-                'priorities': dict(signals._fields['priority'].selection),
+            engine = self.with_context(lang=self._company_lang(company))
+            body = engine.env['ir.qweb']._render('eclipse_risk_monitor.digest_email', {
+                'company': company, 'signals': signals.with_context(lang=engine.env.lang), 'counts': counts,
             })
             self.env['mail.mail'].sudo().create({
-                'subject': _('[Risk Monitor] %(company)s: %(n)s open signal(s), %(p0)s P0 / %(p1)s P1',
-                                      company=company.name, n=len(signals), p0=counts.get('p0', 0),
-                                      p1=counts.get('p1', 0)),
+                'subject': engine._digest_subject(company, len(signals), counts.get('p0', 0), counts.get('p1', 0)),
                 'body_html': body,
                 'email_to': ','.join(users.mapped('email_formatted')),
                 'email_from': company.email_formatted or self.env.user.email_formatted,
                 'auto_delete': True,
             })
+
+    def _digest_subject(self, company, count, p0, p1):
+        return _('[Risk Monitor] %(company)s: %(n)s open signal(s), %(p0)s P0 / %(p1)s P1',
+                          company=company.name, n=count, p0=p0, p1=p1)
 
     # ----------------------------------------------------------------- export
     @api.model

@@ -101,6 +101,9 @@ class TestRiskMonitor(TransactionCase):
         self.assertEqual(signal.occurrences, 3)
 
     def test_mail_failures_sanitised_and_compound(self):
+        # only the checks under test: demo data may contain real overdue invoices
+        # that would (correctly) turn the email signal into a compound risk
+        self.env['eclipse.risk.check'].search([('code', 'not in', ('TECH_MAIL', 'TECH_CRON'))]).active = False
         self._failed_mail(2)
         self._scan()
         mail = self._signal('TECH_MAIL:exceptions')
@@ -243,6 +246,30 @@ class TestRiskMonitor(TransactionCase):
         self.assertEqual(signal.priority, 'p1')
         self.assertNotIn('cliente@example.com', signal.cause)
         self.assertEqual(signal.res_id, moves[0].id)
+
+    def test_spanish_translation(self):
+        self.env['res.lang']._activate_lang('es_ES')
+        self.env['ir.module.module']._load_module_terms(['eclipse_risk_monitor'], ['es_ES'], overwrite=True)
+        self.company.partner_id.lang = 'es_ES'
+        self._failed_mail(1)
+        self.engine.sudo()._cron_scan()  # scheduled scans write in the company's language
+        signal = self._signal('TECH_MAIL:exceptions')
+        self.assertIn('no se han podido enviar', signal.name)
+        self.assertIn('servidor de correo saliente', signal.recommendation)
+        es = {'lang': 'es_ES'}
+        self.assertEqual(self.env.ref('eclipse_risk_monitor.check_tech_mail').with_context(**es).name,
+                         'Correos que no se han podido enviar')
+        self.assertIn('TicketBAI y FacturaE no usan account_edi',
+                      self.env.ref('eclipse_risk_monitor.check_fin_einvoice').with_context(**es).description)
+        self.assertEqual(self.env.ref('eclipse_risk_monitor.menu_risk_root').with_context(**es).name,
+                         'Monitor de riesgos')
+        Signal_es = self.Signal.with_context(**es)
+        self.assertEqual(dict(Signal_es._fields['priority']._description_selection(Signal_es.env))['p0'],
+                         'P0 - Crítico')
+        self.engine._cron_digest()
+        digest = self.env['mail.mail'].search([('subject', 'like', '[Monitor de riesgos]')])
+        self.assertTrue(digest)
+        self.assertIn('Siguiente paso', digest.body_html)
 
     # --------------------------------------------------- isolation, access
     def test_multi_company_isolation(self):
