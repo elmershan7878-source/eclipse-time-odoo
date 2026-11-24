@@ -330,14 +330,17 @@ class TestRiskMonitor(TransactionCase):
         self.assertFalse(signal.activity_ids)
 
     def test_digest_email(self):
+        # language-independent: the digest is written in the company's language
         self._failed_mail(12)
         self._scan()
-        before = self.env['mail.mail'].search_count([('subject', 'like', '[Risk Monitor]')])
+        signal = self._signal('TECH_MAIL:exceptions')
+        Mail = self.env['mail.mail']
+        before = Mail.search([('email_to', 'like', 'manager@example.com')])
         self.engine._cron_digest()
-        digest = self.env['mail.mail'].search([('subject', 'like', '[Risk Monitor]')])
-        self.assertEqual(len(digest), before + 1)
-        self.assertIn('manager@example.com', digest.email_to)
-        self.assertIn('could not be sent', digest.body_html)
+        digest = Mail.search([('email_to', 'like', 'manager@example.com')]) - before
+        self.assertEqual(len(digest), 1)
+        self.assertIn(self.company.name, digest.subject)
+        self.assertIn(signal.name, digest.body_html)
 
     def test_export_contains_no_personal_data(self):
         self._failed_mail(3)
