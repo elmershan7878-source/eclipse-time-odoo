@@ -1,12 +1,13 @@
 {
     'name': 'Operational Risk Monitor',
-    'version': '17.0.1.0.1',
+    'version': '17.0.1.0.2',
     'summary': 'Detects failing scheduled actions, undelivered emails, rejected '
                'e-invoices, late deliveries, overdue receivables and sales drops, '
                'prioritises them P0-P3 and tracks their resolution.',
     'author': 'Eclipse Time',
     'maintainer': 'Eclipse Time',
     'support': 'elmershan7878@gmail.com',
+    'website': 'https://github.com/elmershan7878-source/eclipse-time-odoo',
     'category': 'Productivity',
     'license': 'LGPL-3',
     'depends': ['base_setup', 'mail'],
